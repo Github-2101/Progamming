@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <math.h>
+#include <stdbool.h>
+
+enum rock {
+	classical, pop, rock, rap, new_age, electronics
+};
+struct triangle {
+	struct coordinates{
+		int x;
+		int y;
+	};
+	struct coordinates A;
+	struct coordinates B;
+	struct coordinates C;
+};
+struct element {
+	bool On:1;
+	bool SD:1;
+	bool Compact:1;
+	bool MemoryStick:1;
+
+};
+union Cardreader {
+	int number;
+	struct element err;
+};
+int main()
+{	
+	union Cardreader q;
+	printf("\n7.C. Enter hexadecimal number: ");
+	scanf("%x",&q.number);
+	printf(" On(vkluchen): %d \n SD: %d \n Compact: %d \n MemoryStick: %d",q.err.On,q.err.SD,q.err.Compact,q.err.MemoryStick);
+    return 0;
+
+}
