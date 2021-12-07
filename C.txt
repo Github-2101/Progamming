@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+vector <char> a;
+string s;
+
+//check (correct prints YES false prints NO)
+// in the form of a Stack data structure
+void solve()
+{
+    for(int i=0;i<s.length();i++)
+    {
+      // if s[i] = '(' or s[i]= '[' then push s[i] to a
+        if(s[i]=='(' || s[i]=='[') 
+           {
+               a.push_back(s[i]);
+               continue;
+           }
+// if a is empty then print "NO" (the result is false)
+        if(a.empty()){cout<<"NO\n"; return;}
+
+        //If s[i] = ')' we check that the last part is '(', then delete the element '('
+        if(s[i]==')')
+        {
+            if(a.back()!='(') {cout<<"NO\n"; return;} 
+//if the last part is not ')' prints "NO            
+
+			a.pop_back(); continue; 
+// remove the element and continue the loop  
+      }
+  //If s[i] = ']' we check the last part is '[' then delete the element '['
+        else{
+            if(a.back()!='[') {cout<<"NO\n"; return
+//if the last entry is not ']' print "NO"
+            a.pop_back(); continue;        }
+    }
+    if(a.empty()) cout<<"YES\n"; else cout<<"NO\n"; 
+//if a is empty, print "YES" otherwise print "NO"
+}
+
+int main()
+{
+    freopen("brackets.in","r",stdin); freopen("brackets.out","w",stdout);
+    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+
+    while(cin>>s)
+    {
+        a.clear(); solve();
+    }
+
+    return 0;
+}
+
